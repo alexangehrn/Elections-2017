@@ -1,0 +1,53 @@
+ <div class="panel panel-default">
+   <div class="panel-heading">Résultats du tour</div>
+   <div class="panel-body">
+     <ul class="list-group result">
+       <li class="list-group-item grey">
+         <div class="item">Candidat</div>
+         <div class="item">Résultat</div>
+       </li>
+       <% @resultst1.each do |result| %>
+       <li class="list-group-item ">
+         <div class="item"><%= @candidates.find(result[0]).prenom %> <%= @candidates.find(result[0]).nom %> </div>
+         <div class="item"><%= (result[1] * 100.0 / @votes.count).round(2) %>%</div>
+       </li>
+       <% end %>
+     </ul>
+   </div>
+ </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Filtrer les résultats par code postaux</div>
+  <div class="panel-body">
+<%= form_tag filter_path , :class => "form-horizontal",:method => 'get' do %>
+<%= label_tag "Code Postal"%>
+<%= number_field_tag :search, params[:search], :class => "form-control" %>
+<%= label_tag "Tour"%>
+<%= number_field_tag :tour, params[:tour], :class => "form-control"  %>
+<%= submit_tag "Filtrer", :class => "btn btn-primary" %>
+<% end %>
+</div>
+</div>
+
+
+<div>
+  <h2>Nombre total de votes pour cette circonsciption:<%= @count %><h2>
+  <ul class="list-group ">
+    <li class="list-group-item grey">
+      <div class="item">Candidat</div>
+      <div class="item">Tour</div>
+      <div class="item">Code Postal</div>
+      <div class="item">Bureau de vote</div>
+      <div class="item_long">Date de vote</div>
+    </li>
+    <% @votes.each do |vote| %>
+    <li class="list-group-item ">
+      <div class="item"><%= @candidates.find(vote.id_candidate).prenom %> <%= @candidates.find(vote.id_candidate).nom %> </div>
+      <div class="item"><%= vote.id_tour %></div>
+      <div class="item"><%= vote.code_postal %></div>
+      <div class="item"><%= vote.bureau_de_vote %></div>
+      <div class="item_long"><%= vote.created_at %></div>
+    </li>
+    <% end %>
+  </ul>
+</div>

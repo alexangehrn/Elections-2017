@@ -1,0 +1,25 @@
+<h1> Tours </h1>
+<div class="center">
+<% if @lastTour < 2 %>
+  <%= link_to 'Ajouter un Tour', new_admin_tour_path , :class => "btn btn-primary" %>
+<% end %>
+
+<%= link_to 'Retour', admin_connexions_path , :class => "btn btn-primary" %>
+</div>
+<ul class="list-group">
+  <li class="list-group-item grey">
+    <div class="item_long">Ouverture</div>
+    <div class="item_long">Cloture</div>
+  </li>
+  <% @tours.each do |tour| %>
+  <li class="list-group-item">
+    <div class="item_long"><%= tour.date_debut %></div>
+    <div class="item_long"><%= tour.date_fin %></div>
+  
+    <div class="buttons">
+      <%= link_to 'Modifier', edit_admin_tour_path(tour), :class => "btn btn-primary" %>
+      <%= link_to 'Supprimer',admin_tour_path(tour), method: :delete, data: { confirm: 'Etes-vous sûr?' }, :class => "btn btn-primary" %>
+    </div>
+  </li>
+  <% end %>
+</ul>

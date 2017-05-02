@@ -1,0 +1,24 @@
+<div class="panel panel-default formulaire">
+  <div class="panel-heading">
+    Espace de connexion Admin
+  </div>
+  <div class="panel-body">
+    <%= form_tag admin_connexions_path, :class => "form-horizontal" do %>
+    <div class="form-group">
+      <%= label_tag "Nom",nil, :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= text_field_tag :login, nil, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag "Mot de Passe",nil, :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= password_field_tag :password, nil, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="boutons">
+      <%= submit_tag :connexion, :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="panel-body">
+
+      <%=  form_for([:admin, @tour], :html => {:class => 'form-horizontal'}) do |f| %>
+      <% if @tour.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@tour.errors.count, "error") %> prohibited this tour from being saved:</h2>
+
+          <ul>
+          <% @tour.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :date_debut, "Date d'ouverture", :class => "col-sm-4 control-label" %>
+    <div class="col-sm-6">
+      <%= f.datetime_select :date_debut, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date_fin, "Date de cloture", :class => "col-sm-4 control-label" %>
+    <div class="col-sm-6">
+      <%= f.datetime_select :date_fin, :class => "form-control"%>
+    </div>
+  </div>
+  <div class="boutons">
+    <%= f.submit "envoyer", :class => "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
+

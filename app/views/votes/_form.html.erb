@@ -1,0 +1,37 @@
+<%= form_for(vote) do |f| %>
+<% if vote.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(vote.errors.count, "error") %> a empeché cet enregistrement car :</h2>
+
+  <ul>
+    <% vote.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :id_candidate %>
+  <%= f.number_field :id_candidate %>
+</div>
+
+<div class="field">
+  <%= f.label :code_postal %>
+  <%= f.number_field :code_postal %>
+</div>
+
+<div class="field">
+  <%= f.label :bureau_de_vote %>
+  <%= f.number_field :bureau_de_vote %>
+</div>
+
+<div class="field">
+  <%= f.label :id_tour %>
+  <%= f.number_field :id_tour %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>

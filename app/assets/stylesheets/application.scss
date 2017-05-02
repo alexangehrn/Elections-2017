@@ -1,0 +1,190 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+
+*, body{
+  font-family: "open_sans",Arial,Helvetica,sans-serif !important;
+  font-weight: 100 !important
+}
+
+.navbar{
+  min-height: 90px !important;
+}
+
+.navbar-brand img{
+  height: 80px;
+}
+
+.navbar-nav > li > a{
+  padding:35px !important;
+  color:black !important;
+  font-size: 16px !important;
+}
+
+.btn{
+  background-color: #0B6BA8 !important;
+}
+
+#homeButton{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+a.btn:visited {
+  color:white !important;
+}
+
+.candidates img{
+  width: 30%;
+  float:left;
+  margin-bottom: 40px;
+}
+
+.row {
+  margin : 0px !important
+}
+
+.candidates h3{
+  color: #0B6BA8;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.candidates p{
+  color: #76839a;
+  text-align: center;
+}
+
+.candidates {
+  padding : 20px;
+}
+
+.candidates .divider{
+  width: 80%;
+  margin: auto;
+  height: 1px;
+  background-color: #a8b3c4;
+  clear: both;
+}
+
+.media-left{
+  float:left;
+  padding: 20px;
+}
+.list-group{
+  margin-left:0;
+  margin-right:0;
+}
+
+.media-left img{
+  height: 40px;
+}
+
+.media-body{
+  padding-top: 20px !important;
+}
+
+#candidat img{
+  float: left;
+  width: 20%;
+}
+
+#candidat .blocText{
+  float: right;
+  width : 70%;
+}
+
+.boutons{
+  clear:both;
+  text-align: center;
+}
+
+.blocText h3{
+  text-align: center;
+  color: #0B6BA8;
+}
+
+.blocText p:nth-of-type(1){
+  text-align: center;
+  color: #76839a;
+}
+
+.formulaire{
+  width: 50%;
+  margin:auto;
+}
+
+.item{
+  width : 150px;
+  float: left;
+  padding: 8px;
+
+}
+
+.item_long{
+width : 350px;
+float: left;
+padding: 8px;
+}
+
+.result{
+  width:340px;
+  margin: auto;
+}
+
+.list-group-item {
+  min-height: 50px;
+}
+
+.item img{
+  height:20px;
+}
+
+.grey{
+  background-color: #f8f8f8 !important;
+  height:50px;
+}
+
+.buttons{
+  text-align: right;
+}
+
+.list-group-item{
+  clear: both;
+}
+
+#note{
+  width: 50%;
+  margin:auto;
+  text-align: center;
+  margin-bottom:20px;
+  margin-top:20px;
+}
+
+.center{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  font-size: 25px !important;
+  margin-bottom: 40px !important;
+}
+
+.list-group{
+  margin-top: 20px;
+}
+
+@import "bootstrap"

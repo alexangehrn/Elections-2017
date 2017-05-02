@@ -1,0 +1,28 @@
+<h1> Administrateurs </h1>
+<div class="center">
+  <%= link_to 'Ajouter un Admin', new_admin_admin_path , :class => "btn btn-primary" %>
+  <%= link_to 'Retour', admin_connexions_path , :class => "btn btn-primary" %>
+</div>
+<ul class="list-group">
+  <li class="list-group-item grey">
+    <div class="item">Login</div>
+    <div class="item_long">Mot de passe</div>
+    <div class="item">Statut</div>
+  </li>
+  <% @admins.each do |admin| %>
+  <li class="list-group-item">
+    <div class="item"><%= admin.login %></div>
+    <div class="item_long"><%= admin.password %></div>
+    <% if admin.statut %>
+    <div class="item">Admin Tech</div>
+    <% else %>
+    <div class="item">Validateur</div>
+    <% end %>
+    <div class="buttons">
+      <%= link_to 'Modifier', edit_admin_admin_path(admin), :class => "btn btn-primary" %>
+      <%= link_to 'Supprimer', admin_admin_path(admin), method: :delete, data: { confirm: 'Etes-vous sûr ?' }, :class => "btn btn-primary" %>
+    </div>
+  </li>
+  <% end %>
+
+</ul>

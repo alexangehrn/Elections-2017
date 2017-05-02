@@ -1,0 +1,39 @@
+<h1> Electeurs </h1>
+<div class="center">
+  <%= link_to 'Ajouter un Electeur', new_admin_user_path , :class => "btn btn-primary" %>
+  <%= link_to 'Retour', admin_connexions_path , :class => "btn btn-primary" %>
+</div>
+<ul class="list-group">
+  <li class="list-group-item grey">
+    <div class="item">Nom</div>
+    <div class="item">Prénom</div>
+    <div class="item">Code Postal</div>
+    <div class="item">Bureau de Vote</div>
+    <div class="item">Tour 1</div>
+    <div class="item">Tour 2</div>
+  </li>
+  <% @users.each do |user| %>
+  <li class="list-group-item">
+    <div class="item"><%= user.name %></div>
+    <div class="item"><%= user.forname %></div>
+    <div class="item"><%= user.postal %></div>
+    <div class="item"><%= user.bureau %></div>
+
+    <div class="item">
+        <% if user.tour1 %>
+          <%= image_tag  "success.png" %>
+        <% else %>
+        <%= image_tag  "error.png" %>
+        <% end %>
+    </div>
+    <div class="item">
+      <% if user.tour2 %>
+        <%= image_tag  "success.png" %>
+      <% else %>
+      <%= image_tag  "error.png" %>
+      <% end %>
+    </div>
+
+  </li>
+  <% end %>
+</ul>

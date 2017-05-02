@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">LES CANDIDATS A LA PRESIDENTIELLE</div>
+    <div class="panel-body">
+      <% @candidates.each do |candidate| %>
+      <div class="col-sm-12 col-md-6 candidates">
+        <%= image_tag candidate.photo %>
+        <h3><%= candidate.prenom %> <strong><%= candidate.nom %></strong></h3>
+        <p><%= candidate.affiliation %></p>
+
+        <%= form_for :vote, :url => {:action=>"create", :controller=>"votes"} do |f| %>
+        <div class="field">
+          <%= f.hidden_field :id_candidate, :value=> candidate.id  %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :code_postal, :value=> current_user.postal %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :bureau_de_vote, :value=> current_user.bureau %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :id_tour, :value=> cookies[:tour] %>
+        </div>
+        <div class="center">
+          <% data ="Confirmez-vous votre vote pour #{candidate.prenom} #{candidate.nom} ?" %>
+          <%= f.submit "Voter", data: { confirm: data }, :class => "btn btn-primary" %>
+        </div>
+        <% end %>
+        <div class="divider"> </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

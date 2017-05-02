@@ -1,0 +1,27 @@
+<h1> Candidats </h1>
+<div class="center">
+  <%= link_to 'Ajouter un Candidat', new_admin_candidate_path , :class => "btn btn-primary" %>
+  <%= link_to 'Retour', admin_connexions_path , :class => "btn btn-primary" %>
+</div>
+<ul class="list-group">
+  <li class="list-group-item grey">
+    <div class="item">Photo</div>
+    <div class="item">Prenom</div>
+    <div class="item">Nom</div>
+    <div class="item">Affiliation</div>
+  </li>
+  <% @candidates.each do |candidate| %>
+  <li class="list-group-item">
+    <div class="item"><%= image_tag  candidate.photo %></div>
+    <div class="item"><%= candidate.prenom %></div>
+    <div class="item"><%= candidate.nom %></div>
+    <div class="item"><%= candidate.affiliation %></div>
+    <div class="buttons">
+      <%= link_to 'Détail', admin_candidate_path(candidate), :class => "btn btn-primary" %>
+      <%= link_to 'Modifier', edit_admin_candidate_path(candidate), :class => "btn btn-primary" %>
+      <%= link_to 'Supprimer',admin_candidate_path(candidate), method: :delete, data: { confirm: 'Etes-vous sûr?' }, :class => "btn btn-primary" %>
+    </div>
+  </li>
+  <% end %>
+
+</ul>

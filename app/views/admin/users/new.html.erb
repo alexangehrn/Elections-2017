@@ -1,0 +1,87 @@
+<div class="panel panel-default formulaire">
+  <div class="panel-heading">
+    Ajouter Electeur
+  </div>
+  <div class="panel-body">
+      <%=  form_for([:admin, @user], :html => {:class => 'form-horizontal'}) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this admin from being saved:</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, "Nom", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :forname, "Prénom", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :forname, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :encrypted_code, "Code Confidentiel", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.password_field :encrypted_code, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :postal, "Code Postal", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :postal, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :bureau, "Bureau de Vote", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :bureau, :class => "form-control"%>
+      </div>
+    </div>
+    <div class="boutons">
+      <%= f.submit "ajouter", :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="panel panel-default formulaire">
+  <div class="panel-heading">
+    Ajouter Electeur par CSV
+  </div>
+  <div class="panel-body">
+    <%=  form_for([:admin, @user], :html => {:multipart => true, :class => 'form-horizontal'}) do |f| %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this admin from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :file, "Select CSV file", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.file_field :file, :class => "form-control" %>
+      </div>
+    </div>
+
+    <div class="boutons">
+      <%= f.submit "envoi", :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="panel panel-default formulaire">
+  <div class="panel-heading">
+    Modifier son Code Confidentiel
+  </div>
+  <div class="panel-body">
+    <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> A empeché cet enregistrement :</h2>
+
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+
+    <div class="form-group">
+      <%= f.label :encrypted_code, "Nouveau Code", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.password_field :encrypted_code, :class => "form-control"%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :encrypted_code2, "Validation de Code", :class => "col-sm-4 control-label" %>
+      <div class="col-sm-6">
+        <%= f.password_field :encrypted_code2, :class => "form-control"%>
+      </div>
+    </div>
+    <p id="note"> Vous êtes priés de garder votre nouveau code précieusement et en toute confidentialité</p>
+
+    <div class="boutons">
+      <%= f.submit "modifier",  :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

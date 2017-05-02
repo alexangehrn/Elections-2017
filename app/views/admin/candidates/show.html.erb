@@ -1,0 +1,15 @@
+<div id="candidat">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= image_tag @candidate.photo %>
+      <div class="blocText">
+        <h3><%= @candidate.prenom %> <strong><%= @candidate.nom %></strong></h3>
+        <p><%= @candidate.affiliation %></p>
+        <p><%= @candidate.descriptif %></p>
+      </div>
+      <div class="boutons">
+        <%= link_to 'Modifier le candidat', edit_admin_candidate_path(@candidate), :class => "btn btn-primary" %>
+        <%= link_to 'Retour à la liste des candidats', admin_candidates_path, :class => "btn btn-primary" %>      </div>
+    </div>
+  </div>
+</div>

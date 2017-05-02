@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Élections 2017</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <%= link_to root_path, class:"navbar-brand" do %>
+        <%= image_tag "logoelec.png"%>
+        <% end %>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <% if !current_admin %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>  <%= link_to "Accueil", candidates_path %></li>
+          <li>  <%= link_to "Résultats", votes_path %> </li>
+          <% if current_user %>
+          <% if cookies[:tour]  && @vote_status == false %>
+          <li>  <%= link_to "Voter", election_path %> </li>
+          <% end %>
+          <li>  <%= link_to "Se déconnecter", log_out_path %></li>
+          <% else %>
+          <li>  <%= link_to "Se connecter", log_in_path %></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>  <%= link_to "Accueil", admin_connexions_path %></li>
+          <li>  <%= link_to "Se déconnecter", admin_log_out_path %></li>
+        </ul>
+        <% end %>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container">
+    <% if current_page?(root_path) || current_page?(candidates_path) %>
+    <div id="user_nav">
+      <% if current_user %>
+      <h1>Bonjour <%= current_user.forname %> <%= current_user.name %> !</h1>
+      <% end %>
+      <% if current_admin %>
+      <h1>Bonjour <%= current_admin.login %> !</h1>
+      <% end %>
+    </div>
+    <% end %>
+
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_(name)", :class => "alert alert-info" %>
+    <% end %>
+
+
+    <%= yield %>
+  </div>
+</body>
+</html>
